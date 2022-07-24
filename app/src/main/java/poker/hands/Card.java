@@ -1,21 +1,6 @@
 package poker.hands;
 
-public class Card {
-    private final CardSuit suit;
-    private final CardValue value;
-
-    public Card(CardSuit suit, CardValue value) {
-        this.suit = suit;
-        this.value = value;
-    }
-
-    public CardValue getValue() {
-        return value;
-    }
-
-    public CardSuit getSuit() {
-        return suit;
-    }
+public record Card(CardSuit suit, CardValue value) {
 
     /* convenience methods for generation of cards */
     public static Card clubs(CardValue value) {
@@ -32,5 +17,10 @@ public class Card {
 
     public static Card spades(CardValue value) {
         return new Card(CardSuit.SPADES, value);
+    }
+
+    @Override
+    public String toString() {
+        return suit + "(" + value + ')';
     }
 }

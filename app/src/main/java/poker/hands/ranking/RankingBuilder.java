@@ -21,12 +21,12 @@ public class RankingBuilder {
     public RankingBuilder(Card first, Card second, Card third, Card fourth, Card fifth) {
 
         this.cards = Stream.of(first, second, third, fourth, fifth)
-                .sorted(Comparator.comparing(Card::getValue))
+                .sorted(Comparator.comparing(Card::value))
                 .toList();
         // select rank relevant cards after sorting, so we can work with assumptions that simplify the logic
-        this.firstValue = cards.get(0).getValue();
-        this.thirdValue = cards.get(2).getValue();
-        this.fifthValue = cards.get(4).getValue();
+        this.firstValue = cards.get(0).value();
+        this.thirdValue = cards.get(2).value();
+        this.fifthValue = cards.get(4).value();
     }
 
     public Ranking build() {
@@ -70,7 +70,7 @@ public class RankingBuilder {
     }
 
     private List<CardValue> valuesDesc() {
-        return cards.stream().map(Card::getValue).sorted(Comparator.reverseOrder()).toList();
+        return cards.stream().map(Card::value).sorted(Comparator.reverseOrder()).toList();
     }
 
     private Optional<Ranking> tryAsTwoPairs() {
@@ -139,7 +139,7 @@ public class RankingBuilder {
     }
 
     private long valueOccurrencesOf(CardValue value) {
-        return cards.stream().map(Card::getValue).filter(v -> v.equals(value)).count();
+        return cards.stream().map(Card::value).filter(v -> v.equals(value)).count();
     }
 
     private Optional<Ranking> tryAsStraightFlush() {
@@ -150,7 +150,7 @@ public class RankingBuilder {
     }
 
     private boolean isFlush() {
-        return cards.stream().map(Card::getSuit).distinct().count() == 1;
+        return cards.stream().map(Card::suit).distinct().count() == 1;
     }
 
     private boolean isStraight() {
@@ -164,16 +164,16 @@ public class RankingBuilder {
     }
 
     private List<CardValue> getDistinctValues() {
-        return cards.stream().map(Card::getValue).distinct().toList();
+        return cards.stream().map(Card::value).distinct().toList();
     }
 
     private CardValue highestValue() {
         //noinspection OptionalGetWithoutIsPresent
-        return cards.stream().map(Card::getValue).max(naturalOrder()).get();
+        return cards.stream().map(Card::value).max(naturalOrder()).get();
     }
 
     private CardValue lowestValue() {
         //noinspection OptionalGetWithoutIsPresent
-        return cards.stream().map(Card::getValue).min(naturalOrder()).get();
+        return cards.stream().map(Card::value).min(naturalOrder()).get();
     }
 }

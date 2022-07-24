@@ -1,6 +1,5 @@
 package poker.hands;
 
-import org.hamcrest.Matchers;
 import org.junit.jupiter.api.Test;
 
 import java.util.List;
