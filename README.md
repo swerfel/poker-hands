@@ -1,7 +1,16 @@
 # poker-hands
 
 ## Description
-exercise creating a poker hands comparison
+This repository contains my solution for the later described excercise to compare two poker hands. I have limited my time to create an implementation of the task that is as realistic as possible for practical situations. With that, the solution is not ideal, but it gives an idea of what code might look like that I could create on the job.
+If you have ideas on how to improve the code, I appreciate any tips.
+
+## Excercise
+- The solution should be implemented in Java
+- The implementation of CardSuit and CardValue was pre-sketched
+- There should be a usage example by using System.out.println or a test
+- Libraries (JUnit etc.) are allowed, but the core/businness logic should be implemented by me
+- The repository should contain multiple commits to show how I developed the solution
+
 
 ## Poker rules description
 
